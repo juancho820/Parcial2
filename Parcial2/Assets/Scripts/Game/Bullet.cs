@@ -42,7 +42,7 @@ namespace Parcial2.Game
 
             if (instigator != other.gameObject)
             {
-                Destroy(gameObject); 
+                Destroy(gameObject);
             }
         }
 
@@ -50,11 +50,20 @@ namespace Parcial2.Game
         private void Awake()
         {
             myRigidBody = GetComponent<Rigidbody>();
+            Invoke("AutoDestroy", 6F);
+
         }
 
-        private void OnDestroy()
+        public void OnDestroy()
         {
+            instigator.GetComponent<Player>().myButton.interactable = true;
+            instigator.GetComponent<Player>().myButton2.interactable = true;
             myRigidBody = null;
+        }
+
+        private void AutoDestroy()
+        {
+            Destroy(gameObject);
         }
     } 
 }

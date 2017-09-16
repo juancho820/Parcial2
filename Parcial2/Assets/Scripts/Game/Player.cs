@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Parcial2.Game
 {
@@ -6,6 +7,10 @@ namespace Parcial2.Game
     [RequireComponent(typeof(Collider))]
     public class Player : MonoBehaviour
     {
+
+        public Button myButton;
+        public Button myButton2;
+
         public delegate void OnPlayerKilled();
 
         public event OnPlayerKilled onPlayerKilled;
@@ -17,6 +22,9 @@ namespace Parcial2.Game
 
         [SerializeField]
         private Bullet bulletBase;
+
+        [SerializeField]
+        private Bullet2 bulletBase2;
 
         private PlayerProfile playerProfile;
 
@@ -113,40 +121,41 @@ namespace Parcial2.Game
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Vector3 lookAtLocation = Vector3.zero;
-                //Debug.DrawRay(transform.position, Vector3.forward * 5F, Color.green, 5F);
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    Vector3 lookAtLocation = Vector3.zero;
+            //    //Debug.DrawRay(transform.position, Vector3.forward * 5F, Color.green, 5F);
 
-                Collider[] otherColliders = Physics.OverlapSphere(transform.position, 10F);
+            //    Collider[] otherColliders = Physics.OverlapSphere(transform.position, 10F);
 
-                for (int i = 0; i < otherColliders.Length; i++)
-                {
-                    if (otherColliders[i].gameObject == gameObject)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        Enemy enemy = otherColliders[i].GetComponent<Enemy>();
+            //    for (int i = 0; i < otherColliders.Length; i++)
+            //    {
+            //        if (otherColliders[i].gameObject == gameObject)
+            //        {
+            //            continue;
+            //        }
+            //        else
+            //        {
+            //            Enemy enemy = otherColliders[i].GetComponent<Enemy>();
 
-                        if (enemy != null)
-                        {
-                            lookAtLocation = enemy.transform.position;
-                            break;
-                        }
-                    }
-                }
+            //            if (enemy != null)
+            //            {
+            //                lookAtLocation = enemy.transform.position;
+            //                break;
+            //            }
+            //        }
+            //    }
 
-                if (lookAtLocation != Vector3.zero)
-                {
-                    transform.LookAt(lookAtLocation);
-                }
+            //    if (lookAtLocation != Vector3.zero)
+            //    {
+            //        transform.LookAt(lookAtLocation);
+            //    }
 
-                Bullet bulletInstance = Instantiate(bulletBase, transform.position + new Vector3(0F, 1F, 0F), transform.rotation);
-                bulletInstance.SetParams(50, 100, this.gameObject);
-                bulletInstance.Toss();
-            }
+            //    Bullet bulletInstance = Instantiate(bulletBase, transform.position + new Vector3(0F, 1F, 0F), transform.rotation);
+            //    bulletInstance.SetParams(50, 100, this.gameObject);
+            //    bulletInstance.Toss();
+            //}
+
         }
 
         private void OnDrawGizmosSelected()
@@ -157,5 +166,86 @@ namespace Parcial2.Game
             Gizmos.color = Color.green;
             Gizmos.DrawRay(transform.position, Vector3.forward * 10F);
         }
+
+        public void DispararBoton()
+        {
+
+            Vector3 lookAtLocation = Vector3.zero;
+            //Debug.DrawRay(transform.position, Vector3.forward * 5F, Color.green, 5F);
+
+            Collider[] otherColliders = Physics.OverlapSphere(transform.position, 10F);
+
+            for (int i = 0; i < otherColliders.Length; i++)
+            {
+                if (otherColliders[i].gameObject == gameObject)
+                {
+                    continue;
+                }
+                else
+                {
+                    Enemy enemy = otherColliders[i].GetComponent<Enemy>();
+
+                    if (enemy != null)
+                    {
+                        lookAtLocation = enemy.transform.position;
+                        break;
+                    }
+                }
+            }
+
+            if (lookAtLocation != Vector3.zero)
+            {
+                transform.LookAt(lookAtLocation);
+            }
+
+            Bullet bulletInstance = Instantiate(bulletBase, transform.position + new Vector3(0F, 1F, 0F), transform.rotation);
+            bulletInstance.SetParams(50, 100, this.gameObject);
+            bulletInstance.Toss();
+
+            myButton.interactable = false;
+            myButton2.interactable = false;
+            
+            
+        }
+        public void DispararBalaB()
+        {
+
+            Vector3 lookAtLocation = Vector3.zero;
+            //Debug.DrawRay(transform.position, Vector3.forward * 5F, Color.green, 5F);
+
+            Collider[] otherColliders = Physics.OverlapSphere(transform.position, 10F);
+
+            for (int i = 0; i < otherColliders.Length; i++)
+            {
+                if (otherColliders[i].gameObject == gameObject)
+                {
+                    continue;
+                }
+                else
+                {
+                    Enemy enemy = otherColliders[i].GetComponent<Enemy>();
+
+                    if (enemy != null)
+                    {
+                        lookAtLocation = enemy.transform.position;
+                        break;
+                    }
+                }
+            }
+
+            if (lookAtLocation != Vector3.zero)
+            {
+                transform.LookAt(lookAtLocation);
+            }
+
+            Bullet2 bulletInstance = Instantiate(bulletBase2, transform.position + new Vector3(0F, 1F, 0F), transform.rotation);
+            bulletInstance.SetParams(50, 100, this.gameObject);
+            bulletInstance.Toss();
+
+            myButton2.interactable = false;
+
+
+        }
     }
+
 }

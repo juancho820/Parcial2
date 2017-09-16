@@ -1,1 +1,27 @@
-[Inserte aquí las respuestas a las preguntas del numeral 1]
+﻿[Inserte aquí las respuestas a las preguntas del numeral 1]
+
+1) el jugador al hundir espacio genera un arreglo de colliders que es igual a una esfera desde el personaje con un radio de 10f,
+lo que hace esta esfera es detectar el numero de colliders dentro del radio, y detecta los colliders de los enemigos
+al hacer esto accede al componente de enemigos y lo iguala a "enemy", por lo tanto ya tiene un apuntador al enemigo
+y lo siguiente que hace es utilizar lookAtLocation que la habiamos definido como un vector3 previamente, la cual pasa a ser que el jugador mire a la posicion del enemigo
+
+2)la unica restriccion de movimiento del enemigo es si el jugador no existiera (Player.Instance != null)
+ademas existe otro condicional que detecta si el enemigo colisiono con el usuario deja de moverse.
+
+3)se define una bullet nueva como bulletInstance a esta se le definen 3 cosas, la bala original, el vector posicion y la rotacion,
+luego se le dan 3 parametros que definen la velocidad, el daño, y el instigador. Luego de aplica el metodo Toss, el cual le agrega
+fuerza a la instancia hacia adelante con una velocidad y con un modo VelocityChange, el cual agrega la velocidad que es sin
+importar la masa del objeto.
+el tier, color, bodymesh, y el speed tienen un serializefield el cual es la funcion que permite que estos componentes se puedan agregar desde unity en el inspector.
+
+los metodos start y update son privados por buena praxis ya que ningun elemento va a acceder a estos metodos entonces no tiene sentido ponerlo privado.
+
+en cuanto a RecieveDamage es un metodo publico que recibe 2 parametros por lo tanto es un metodo que otras clases van a llamar con valores especificos.
+
+4)las propiedades del enemigo primero que todo tienen un requireComponent el cual dice que es necesario este tipo de elementos para que funcione el codio, luego tiene un protected enum, por lo que significa que solo las sublacses pueden acceder
+tiene el tier y la velocidad de manera privada solo el puede acceder, y el color, el bodymesh y el bool canMove es publico, cualquiera puede acceder.
+En cuanto a el Atk y HP lo que quieren con ellos es que cualquiera los puede leer, pero solo las subclases pueden cambiar el valor de ellos.
+
+
+5)el instigator toma de referencia al jugador ya pasado por los parametros al instanciar la bala este lo que hace es
+comprobar si el instigator(jugador) es diferente al other.gameObject (objeto con el que colisiona) si esto se cumple, la bala se destruye.
