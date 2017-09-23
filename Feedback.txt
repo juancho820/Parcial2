@@ -1,0 +1,16 @@
+Feedback.
+
+1. El arreglo que se genera no se iguala a una esfera... Nunca. Ojo que eso no suena lógico. Con todo lo demás, está correcto el análisis. (0.2)
+2. OK (0.3)
+3 Solo bastaba con decir que se usa instanciación directa. (0.3)
+4. OK (0.3)
+5. Eso es lo que dice el código, pero la respuesta no especifica qué significa eso. La función del 'instigator' es determinar quién instanció la bala (en el caso, como mencionas, el player). (0.15)
+
+Código:
+1. La idea era que usaran fábricas (usando el patrón Factory) y el controlador debía pedir a esas fábricas la instancia del enemigo. El código provisto para el controlador genera las instancias de los enemigos y tampoco modifica los parámetros de los enemigos (0.0)
+2.  OK (0.5)
+3. Si yo especifico que se cree "1 enemigo", debería crearme un solo enemigo, de cualquier tipo. El código provisto genera una instancia de cada tipo por cada "1 enemigo" pedido. El manejo del tiempo es acertado (0.5)
+4. El botón se habilita cuando la bala se destruye, pero no es lo que se pidió (0.5)
+5. OK (0.5)
+
+Total: 3.25
