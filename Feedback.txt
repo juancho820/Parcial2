@@ -11,6 +11,6 @@ Código:
 2.  OK (0.5)
 3. Si yo especifico que se cree "1 enemigo", debería crearme un solo enemigo, de cualquier tipo. El código provisto genera una instancia de cada tipo por cada "1 enemigo" pedido. El manejo del tiempo es acertado (0.5)
 4. El botón se habilita cuando la bala se destruye, pero no es lo que se pidió (0.5)
-5. OK (0.5)
+5. OK código del pool, no está integrado a la funcionalidad (el player sigue disparando usando Instantiate()) (0.25)
 
-Total: 3.25
+Total: 3.00
